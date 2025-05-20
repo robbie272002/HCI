@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MURAi - Content Moderation Browser Extension</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .extension-preview {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 1.5rem;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-shield-alt text-indigo-600 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-indigo-600">MURAi</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#features" class="text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Features</a>
+                    <a href="#how-it-works" class="text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">How It Works</a>
+                    <a href="#analytics" class="text-gray-700 hover:text-indigo-600 px-3 py-2 text-sm font-medium">Analytics</a>
+                    <a href="#download" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 transition duration-300">Download Now</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#features" class="text-gray-700 hover:text-indigo-600 block px-3 py-2 text-base font-medium">Features</a>
+                <a href="#how-it-works" class="text-gray-700 hover:text-indigo-600 block px-3 py-2 text-base font-medium">How It Works</a>
+                <a href="#analytics" class="text-gray-700 hover:text-indigo-600 block px-3 py-2 text-base font-medium">Analytics</a>
+                <a href="#download" class="bg-indigo-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-indigo-700 transition duration-300">Download Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-12 md:pt-32 md:pb-20 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Moderate Inappropriate Content with <span class="text-yellow-300">MURAi</span></h1>
+                    <p class="text-lg md:text-xl mb-8 opacity-90">A powerful browser extension that detects and filters inappropriate words in Filipino and English using advanced sentiment analysis.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#download" class="bg-white text-indigo-600 hover:bg-gray-100 px-6 py-3 rounded-md text-lg font-semibold text-center transition duration-300">Get MURAi Now</a>
+                        <a href="#how-it-works" class="border-2 border-white text-white hover:bg-white hover:text-indigo-600 px-6 py-3 rounded-md text-lg font-semibold text-center transition duration-300">See How It Works</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://illustrations.popsy.co/amber/browser-window.svg" alt="Browser Extension" class="w-full max-w-md floating">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="py-8 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-500 mb-6">Trusted by organizations worldwide</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                <div class="text-gray-700 text-2xl font-bold">School</div>
+                <div class="text-gray-700 text-2xl font-bold">Parents</div>
+                <div class="text-gray-700 text-2xl font-bold">Workplace</div>
+                <div class="text-gray-700 text-2xl font-bold">Community</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Powerful Features for Safer Browsing</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">MURAi combines advanced technology with user-friendly features to create a safer online environment.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md border border-gray-100 transition duration-300">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-language text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Dual Language Support</h3>
+                    <p class="text-gray-600">Detects inappropriate content in both Filipino and English, with context-aware analysis for accurate results.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md border border-gray-100 transition duration-300">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Real-time Analytics</h3>
+                    <p class="text-gray-600">Comprehensive dashboard showing content trends, flagged words, and sentiment analysis over time.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md border border-gray-100 transition duration-300">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-sliders-h text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Customizable Filters</h3>
+                    <p class="text-gray-600">Adjust sensitivity levels and create custom word lists to match your specific moderation needs.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md border border-gray-100 transition duration-300">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-bell text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Smart Alerts</h3>
+                    <p class="text-gray-600">Get notified when inappropriate content is detected, with options for immediate action or review.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md border border-gray-100 transition duration-300">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-user-shield text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Privacy Focused</h3>
+                    <p class="text-gray-600">All analysis happens locally in your browser. Your data never leaves your device without permission.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-8 rounded-xl shadow-md border border-gray-100 transition duration-300">
+                    <div class="w-14 h-14 bg-indigo-50 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-sync-alt text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Continuous Updates</h3>
+                    <p class="text-gray-600">Regular updates to our language models and word databases to keep up with evolving online language.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How MURAi Works</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our advanced technology makes content moderation seamless and effective.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center mb-16">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md extension-preview">
+                        <div class="flex items-center mb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex items-start mb-4">
+                                <div class="w-10 h-10 rounded-full bg-gray-300 mr-3"></div>
+                                <div>
+                                    <div class="bg-gray-200 h-4 w-32 mb-2"></div>
+                                    <div class="bg-gray-200 h-3 w-24"></div>
+                                </div>
+                            </div>
+                            <div class="bg-red-100 border-l-4 border-red-500 p-3 mb-3">
+                                <p class="text-red-800">"This is an <span class="font-bold">inappropriate</span> word that should be filtered."</p>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-500">
+                                <span class="mr-3"><i class="fas fa-flag text-red-500 mr-1"></i> Flagged Content</span>
+                                <span><i class="fas fa-chart-bar text-indigo-500 mr-1"></i> Analyze</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Real-time Content Analysis</h3>
+                    <p class="text-gray-600 mb-4">MURAi scans web pages and social media platforms in real-time, identifying potentially inappropriate language in both Filipino and English.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">Uses natural language processing to understand context</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">Differentiates between casual speech and harmful content</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">Learns from user feedback to improve accuracy</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row-reverse items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pl-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md extension-preview">
+                        <div class="flex justify-between items-center mb-4">
+                            <h4 class="font-bold text-gray-800">MURAi Dashboard</h4>
+                            <div class="text-sm text-indigo-600">Last 7 days</div>
+                        </div>
+                        <div class="h-48 bg-gray-50 rounded-lg mb-4 flex items-end">
+                            <div class="w-full flex justify-between px-2">
+                                <div class="w-1/5 bg-indigo-500 rounded-t h-16" style="height: 40%"></div>
+                                <div class="w-1/5 bg-indigo-500 rounded-t h-20" style="height: 50%"></div>
+                                <div class="w-1/5 bg-indigo-500 rounded-t h-28" style="height: 70%"></div>
+                                <div class="w-1/5 bg-indigo-500 rounded-t h-32" style="height: 80%"></div>
+                                <div class="w-1/5 bg-indigo-500 rounded-t h-24" style="height: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div class="bg-indigo-50 p-3 rounded-lg">
+                                <div class="text-indigo-800 font-bold text-xl">127</div>
+                                <div class="text-xs text-gray-600">Flagged Items</div>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg">
+                                <div class="text-green-800 font-bold text-xl">84%</div>
+                                <div class="text-xs text-gray-600">Accuracy</div>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg">
+                                <div class="text-purple-800 font-bold text-xl">63</div>
+                                <div class="text-xs text-gray-600">New Words</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Comprehensive Analytics Dashboard</h3>
+                    <p class="text-gray-600 mb-4">Gain insights into content patterns with our detailed analytics dashboard that tracks and visualizes moderation data.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">Track trends in inappropriate language usage over time</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">Compare sentiment analysis between different platforms</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-700">Export reports for compliance documentation</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Preview Section -->
+    <section id="analytics" class="py-16 md:py-24 bg-indigo-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Advanced Sentiment Analysis</h2>
+                <p class="text-lg opacity-90 max-w-3xl mx-auto">MURAi goes beyond simple word filtering with sophisticated sentiment analysis to understand the tone and intent behind the words.</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8 text-gray-800">
+                        <h3 class="text-2xl font-bold mb-4">Understanding Context Matters</h3>
+                        <p class="mb-6">Our system analyzes not just individual words, but the complete context to determine appropriateness:</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-semibold">Cultural Context</h4>
+                                    <p class="text-sm text-gray-600">Recognizes differences in meaning between Filipino and English usage</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-semibold">Conversational Tone</h4>
+                                    <p class="text-sm text-gray-600">Distinguishes between casual conversation and harmful speech</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-semibold">Relationship Mapping</h4>
+                                    <p class="text-sm text-gray-600">Understands social dynamics in group conversations</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 bg-gray-50 p-8">
+                        <div class="bg-white p-6 rounded-lg shadow-sm">
+                            <div class="flex justify-between items-center mb-6">
+                                <h4 class="font-bold text-gray-800">Sentiment Analysis Results</h4>
+                                <div class="text-sm text-indigo-600">Sample Analysis</div>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm font-medium text-gray-700">Positive Sentiment</span>
+                                        <span class="text-sm font-medium text-gray-700">72%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-green-500 h-2 rounded-full" style="width: 72%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm font-medium text-gray-700">Neutral Sentiment</span>
+                                        <span class="text-sm font-medium text-gray-700">18%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-yellow-500 h-2 rounded-full" style="width: 18%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm font-medium text-gray-700">Negative Sentiment</span>
+                                        <span class="text-sm font-medium text-gray-700">10%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-red-500 h-2 rounded-full" style="width: 10%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8">
+                                <h5 class="font-semibold text-gray-800 mb-3">Flagged Content Breakdown</h5>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-sm text-gray-600">Explicit Language</span>
+                                        <span class="text-sm font-medium">24 instances</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm text-gray-600">Bullying/Harassment</span>
+                                        <span class="text-sm font-medium">15 instances</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-sm text-gray-600">Hate Speech</span>
+                                        <span class="text-sm font-medium">7 instances</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Users Say</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Hear from educators, parents, and community leaders who use MURAi.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 mr-4">
+                            <i class="fas fa-user-tie text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Mr. Santos</h4>
+                            <p class="text-sm text-gray-600">High School Principal</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"MURAi has transformed how we monitor online interactions among our students. The sentiment analysis helps us identify not just explicit language, but also subtle bullying patterns we might have missed."</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 mr-4">
+                            <i class="fas fa-user-graduate text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Mrs. Reyes</h4>
+                            <p class="text-sm text-gray-600">Parent of two teens</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"As a parent, I appreciate how MURAi helps filter content without being overly restrictive. The dashboard lets me see what kind of language my children are encountering online."</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 mr-4">
+                            <i class="fas fa-users text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Community Center</h4>
+                            <p class="text-sm text-gray-600">Public Computer Lab</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"Our public computers are used by people of all ages. MURAi's dual language support and customizable filters help us maintain a respectful environment for everyone."</p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-16 md:py-24 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Make Your Online Space Safer?</h2>
+                    <p class="text-xl mb-8 opacity-90">Download MURAi today and experience the power of intelligent content moderation.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="bg-white text-indigo-600 hover:bg-gray-100 px-6 py-3 rounded-md text-lg font-semibold flex items-center transition duration-300">
+                            <i class="fab fa-chrome text-2xl mr-3"></i>
+                            <span>Add to Chrome</span>
+                        </button>
+                        <button class="bg-gray-900 text-white hover:bg-gray-800 px-6 py-3 rounded-md text-lg font-semibold flex items-center transition duration-300">
+                            <i class="fab fa-firefox text-2xl mr-3"></i>
+                            <span>Add to Firefox</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-filter backdrop-blur-sm max-w-md">
+                        <h3 class="text-2xl font-bold mb-4">Get Started in Minutes</h3>
+                        <ol class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="bg-white text-indigo-600 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">1</span>
+                                <span>Click "Add to Browser" above</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-white text-indigo-600 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">2</span>
+                                <span>Follow the installation prompts</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-white text-indigo-600 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">3</span>
+                                <span>Customize your filter settings</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-white text-indigo-600 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">4</span>
+                                <span>Start browsing with confidence</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                <p class="text-lg text-gray-600">Find answers to common questions about MURAi.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <button class="flex items-center justify-between w-full text-left" onclick="toggleFAQ(1)">
+                        <h3 class="text-lg font-semibold text-gray-900">How does MURAi handle false positives?</h3>
+                        <i class="fas fa-chevron-down text-indigo-600 transition-transform duration-300" id="faq-icon-1"></i>
+                    </button>
+                    <div class="mt-3 text-gray-600 hidden" id="faq-content-1">
+                        <p>MURAi uses advanced context analysis to minimize false positives. When a word is flagged, our system examines the surrounding text, tone, and conversation history before determining if it's truly inappropriate. Users can also provide feedback on flagged content, which helps our algorithms learn and improve over time.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <button class="flex items-center justify-between w-full text-left" onclick="toggleFAQ(2)">
+                        <h3 class="text-lg font-semibold text-gray-900">Is MURAi available for mobile browsers?</h3>
+                        <i class="fas fa-chevron-down text-indigo-600 transition-transform duration-300" id="faq-icon-2"></i>
+                    </button>
+                    <div class="mt-3 text-gray-600 hidden" id="faq-content-2">
+                        <p>Currently, MURAi is available as an extension for desktop browsers (Chrome, Firefox, Edge). We're actively working on mobile versions and plan to release them in the near future. Sign up for our newsletter to be notified when mobile support becomes available.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <button class="flex items-center justify-between w-full text-left" onclick="toggleFAQ(3)">
+                        <h3 class="text-lg font-semibold text-gray-900">How does the sentiment analysis work for Filipino language?</h3>
+                        <i class="fas fa-chevron-down text-indigo-600 transition-transform duration-300" id="faq-icon-3"></i>
+                    </button>
+                    <div class="mt-3 text-gray-600 hidden" id="faq-content-3">
+                        <p>Our Filipino language model was trained on extensive datasets of Tagalog and regional Philippine languages, incorporating cultural context and local expressions. It understands code-switching between English and Filipino, regional variations, and contemporary slang. The model evaluates not just individual words but complete phrases and conversational patterns.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <button class="flex items-center justify-between w-full text-left" onclick="toggleFAQ(4)">
+                        <h3 class="text-lg font-semibold text-gray-900">Can organizations get customized versions of MURAi?</h3>
+                        <i class="fas fa-chevron-down text-indigo-600 transition-transform duration-300" id="faq-icon-4"></i>
+                    </button>
+                    <div class="mt-3 text-gray-600 hidden" id="faq-content-4">
+                        <p>Yes! We offer enterprise solutions with custom word lists, specialized reporting, and integration with existing moderation systems. Contact our sales team to discuss your organization's specific needs and how MURAi can be tailored to your requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-shield-alt text-indigo-400 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">MURAi</span>
+                    </div>
+                    <p class="text-gray-400">Advanced content moderation for a safer online experience in Filipino and English.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition">Features</a></li>
+                        <li><a href="#how-it-works" class="text-gray-400 hover:text-white transition">How It Works</a></li>
+                        <li><a href="#analytics" class="text-gray-400 hover:text-white transition">Analytics</a></li>
+                        <li><a href="#download" class="text-gray-400 hover:text-white transition">Download</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-indigo-600 transition">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400">Subscribe to our newsletter</p>
+                    <div class="mt-2 flex">
+                        <input type="email" placeholder="Your email" class="bg-gray-800 text-white px-4 py-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full">
+                        <button class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-r-md transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 MURAi. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // FAQ toggle functionality
+        function toggleFAQ(id) {
+            const content = document.getElementById(`faq-content-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            
+            content.classList.toggle('hidden');
+            icon.classList.toggle('transform');
+            icon.classList.toggle('rotate-180');
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    mobileMenu.classList.add('hidden');
+                    
+                    // Scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
